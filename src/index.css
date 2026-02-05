@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+/* Custom theme */
+@theme {
+  --color-primary: #667eea;
+  --color-primary-dark: #764ba2;
+}
+
+/* Custom animations */
+@keyframes backgroundMove {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+.animate-background {
+    animation: backgroundMove 20s linear infinite;
+}

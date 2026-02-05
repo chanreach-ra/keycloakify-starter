@@ -3,7 +3,19 @@ import type { ClassKey } from "keycloakify/login";
 import type { KcContext } from "./KcContext";
 import { useI18n } from "./i18n";
 import DefaultPage from "keycloakify/login/DefaultPage";
-import Template from "keycloakify/login/Template";
+import HybridTemplate from "./HybridTemplate";
+import HybridLogin from "./pages/HybridLogin";
+import HybridRegister from "./pages/HybridRegister";
+import HybridForgotPassword from "./pages/HybridForgotPassword";
+import HybridUpdatePassword from "./pages/HybridUpdatePassword";
+import HybridLoginOtp from "./pages/HybridLoginOtp";
+import HybridVerifyEmail from "./pages/HybridVerifyEmail";
+import HybridInfo from "./pages/HybridInfo";
+import HybridError from "./pages/HybridError";
+import HybridTerms from "./pages/HybridTerms";
+import HybridUpdateProfile from "./pages/HybridUpdateProfile";
+import HybridPageExpired from "./pages/HybridPageExpired";
+
 const UserProfileFormFields = lazy(
     () => import("keycloakify/login/UserProfileFormFields")
 );
@@ -19,14 +31,124 @@ export default function KcPage(props: { kcContext: KcContext }) {
         <Suspense>
             {(() => {
                 switch (kcContext.pageId) {
+                    case "login.ftl":
+                        return (
+                            <HybridLogin
+                                kcContext={kcContext}
+                                i18n={i18n}
+                                classes={classes}
+                                Template={HybridTemplate}
+                                doUseDefaultCss={false}
+                            />
+                        );
+                    case "register.ftl":
+                        return (
+                            <HybridRegister
+                                kcContext={kcContext}
+                                i18n={i18n}
+                                classes={classes}
+                                Template={HybridTemplate}
+                                doUseDefaultCss={false}
+                            />
+                        );
+                    case "login-reset-password.ftl":
+                        return (
+                            <HybridForgotPassword
+                                kcContext={kcContext}
+                                i18n={i18n}
+                                classes={classes}
+                                Template={HybridTemplate}
+                                doUseDefaultCss={false}
+                            />
+                        );
+                    case "login-update-password.ftl":
+                        return (
+                            <HybridUpdatePassword
+                                kcContext={kcContext}
+                                i18n={i18n}
+                                classes={classes}
+                                Template={HybridTemplate}
+                                doUseDefaultCss={false}
+                            />
+                        );
+                    case "login-otp.ftl":
+                        return (
+                            <HybridLoginOtp
+                                kcContext={kcContext}
+                                i18n={i18n}
+                                classes={classes}
+                                Template={HybridTemplate}
+                                doUseDefaultCss={false}
+                            />
+                        );
+                    case "login-verify-email.ftl":
+                        return (
+                            <HybridVerifyEmail
+                                kcContext={kcContext}
+                                i18n={i18n}
+                                classes={classes}
+                                Template={HybridTemplate}
+                                doUseDefaultCss={false}
+                            />
+                        );
+                    case "info.ftl":
+                        return (
+                            <HybridInfo
+                                kcContext={kcContext}
+                                i18n={i18n}
+                                classes={classes}
+                                Template={HybridTemplate}
+                                doUseDefaultCss={false}
+                            />
+                        );
+                    case "error.ftl":
+                        return (
+                            <HybridError
+                                kcContext={kcContext}
+                                i18n={i18n}
+                                classes={classes}
+                                Template={HybridTemplate}
+                                doUseDefaultCss={false}
+                            />
+                        );
+                    case "terms.ftl":
+                        return (
+                            <HybridTerms
+                                kcContext={kcContext}
+                                i18n={i18n}
+                                classes={classes}
+                                Template={HybridTemplate}
+                                doUseDefaultCss={false}
+                            />
+                        );
+                    case "login-update-profile.ftl":
+                        return (
+                            <HybridUpdateProfile
+                                kcContext={kcContext}
+                                i18n={i18n}
+                                classes={classes}
+                                Template={HybridTemplate}
+                                doUseDefaultCss={false}
+                            />
+                        );
+                    case "login-page-expired.ftl":
+                        return (
+                            <HybridPageExpired
+                                kcContext={kcContext}
+                                i18n={i18n}
+                                classes={classes}
+                                Template={HybridTemplate}
+                                doUseDefaultCss={false}
+                            />
+                        );
                     default:
                         return (
                             <DefaultPage
                                 kcContext={kcContext}
                                 i18n={i18n}
                                 classes={classes}
-                                Template={Template}
-                                doUseDefaultCss={true}
+                                Template={HybridTemplate}
+                                doUseDefaultCss={false}
                                 UserProfileFormFields={UserProfileFormFields}
                                 doMakeUserConfirmPassword={doMakeUserConfirmPassword}
                             />
