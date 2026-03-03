@@ -114,7 +114,7 @@ export default function HybridLogin(props: PageProps<Extract<KcContext, { pageId
                     fullWidth
                     size="large"
                     disabled={kcContext.isAppInitiatedAction}
-                    className="bg-gradient-to-r from-[#667eea] to-[#764ba2] hover:shadow-xl transform hover:-translate-y-0.5 transition-all normal-case font-semibold py-3"
+                    className="bg-linear-to-r from-primary to-primary-dark hover:shadow-xl transform hover:-translate-y-0.5 transition-all normal-case font-semibold py-3"
                 >
                     {msg("doLogIn")}
                 </Button>

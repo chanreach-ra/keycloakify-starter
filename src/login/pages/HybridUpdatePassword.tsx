@@ -5,9 +5,7 @@ import type { I18n } from "../i18n";
 import { TextField, Button, InputAdornment, IconButton } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
-export default function HybridUpdatePassword(
-    props: PageProps<Extract<KcContext, { pageId: "login-update-password.ftl" }>, I18n>
-) {
+export default function HybridUpdatePassword(props: PageProps<Extract<KcContext, { pageId: "login-update-password.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
     const { msg } = i18n;
     const { url, isAppInitiatedAction } = kcContext;
@@ -16,15 +14,9 @@ export default function HybridUpdatePassword(
     const [showPasswordNew, setShowPasswordNew] = useState(false);
 
     return (
-        <Template
-            kcContext={kcContext}
-            i18n={i18n}
-            doUseDefaultCss={doUseDefaultCss}
-            classes={classes}
-            headerNode={msg("updatePasswordTitle")}
-        >
+        <Template kcContext={kcContext} i18n={i18n} doUseDefaultCss={doUseDefaultCss} classes={classes} headerNode={msg("updatePasswordTitle")}>
             <form action={url.loginAction} method="post" className="space-y-6">
-                <div className="space-y-4">
+                <div className="flex flex-col gap-2 pt-4">
                     <TextField
                         fullWidth
                         type={showPassword ? "text" : "password"}
@@ -37,14 +29,11 @@ export default function HybridUpdatePassword(
                         InputProps={{
                             endAdornment: (
                                 <InputAdornment position="end">
-                                    <IconButton
-                                        onClick={() => setShowPassword(!showPassword)}
-                                        edge="end"
-                                    >
+                                    <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
                                         {showPassword ? <VisibilityOff /> : <Visibility />}
                                     </IconButton>
                                 </InputAdornment>
-                            ),
+                            )
                         }}
                     />
 
@@ -59,14 +48,11 @@ export default function HybridUpdatePassword(
                         InputProps={{
                             endAdornment: (
                                 <InputAdornment position="end">
-                                    <IconButton
-                                        onClick={() => setShowPasswordNew(!showPasswordNew)}
-                                        edge="end"
-                                    >
+                                    <IconButton onClick={() => setShowPasswordNew(!showPasswordNew)} edge="end">
                                         {showPasswordNew ? <VisibilityOff /> : <Visibility />}
                                     </IconButton>
                                 </InputAdornment>
-                            ),
+                            )
                         }}
                     />
 
@@ -78,6 +64,15 @@ export default function HybridUpdatePassword(
                         autoComplete="new-password"
                         required
                         variant="outlined"
+                        InputProps={{
+                            endAdornment: (
+                                <InputAdornment position="end">
+                                    <IconButton onClick={() => setShowPasswordNew(!showPasswordNew)} edge="end">
+                                        {showPasswordNew ? <VisibilityOff /> : <Visibility />}
+                                    </IconButton>
+                                </InputAdornment>
+                            )
+                        }}
                     />
                 </div>
 
@@ -87,7 +82,8 @@ export default function HybridUpdatePassword(
                         variant="contained"
                         fullWidth
                         size="large"
-                        sx={{ textTransform: 'none', py: 1.5 }}
+                        className="bg-linear-to-r from-primary to-primary-dark hover:shadow-xl transform hover:-translate-y-0.5 transition-all normal-case font-semibold py-3"
+                        sx={{ textTransform: "none", py: 1.5 }}
                     >
                         {msg("doSubmit")}
                     </Button>
@@ -99,7 +95,8 @@ export default function HybridUpdatePassword(
                             variant="outlined"
                             fullWidth
                             size="large"
-                            sx={{ textTransform: 'none', py: 1.5 }}
+                            className="bg-linear-to-r from-primary to-primary-dark hover:shadow-xl transform hover:-translate-y-0.5 transition-all normal-case font-semibold py-3"
+                            sx={{ textTransform: "none", py: 1.5 }}
                         >
                             {msg("doCancel")}
                         </Button>

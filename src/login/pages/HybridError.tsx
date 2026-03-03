@@ -21,7 +21,7 @@ export default function HybridError(
         >
             <div className="space-y-6 text-center">
                 <div className="flex justify-center">
-                    <div className="w-20 h-20 bg-gradient-to-br from-red-500 to-red-700 rounded-full flex items-center justify-center">
+                    <div className="w-20 h-20 bg-linear-to-br from-red-500 to-red-700 rounded-full flex items-center justify-center">
                         <ErrorIcon sx={{ fontSize: 40, color: 'white' }} />
                     </div>
                 </div>

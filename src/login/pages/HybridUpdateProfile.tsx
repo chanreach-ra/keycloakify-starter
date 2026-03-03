@@ -22,7 +22,7 @@ export default function HybridUpdateProfile(
             headerNode={msg("loginProfileTitle")}
         >
             <form action={url.loginAction} method="post" className="space-y-6">
-                <div className="space-y-4">
+                <div className="flex flex-col gap-4">
                     {attributesByName.username && !attributesByName.username.readOnly && (
                         <TextField
                             fullWidth
@@ -80,6 +80,7 @@ export default function HybridUpdateProfile(
                         variant="contained"
                         fullWidth
                         size="large"
+                        className="bg-linear-to-r from-primary to-primary-dark hover:shadow-xl transform hover:-translate-y-0.5 transition-all normal-case font-semibold py-3"
                         sx={{ textTransform: 'none', py: 1.5 }}
                     >
                         {msg("doSubmit")}

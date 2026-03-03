@@ -21,7 +21,7 @@ export default function HybridPageExpired(
         >
             <div className="space-y-6 text-center">
                 <div className="flex justify-center">
-                    <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-700 rounded-full flex items-center justify-center">
+                    <div className="w-20 h-20 bg-linear-to-br from-orange-500 to-orange-700 rounded-full flex items-center justify-center">
                         <AccessTime sx={{ fontSize: 40, color: 'white' }} />
                     </div>
                 </div>

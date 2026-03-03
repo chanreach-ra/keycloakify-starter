@@ -21,7 +21,7 @@ export default function HybridVerifyEmail(
         >
             <div className="space-y-6 text-center">
                 <div className="flex justify-center">
-                    <div className="w-20 h-20 bg-gradient-to-br from-[#667eea] to-[#764ba2] rounded-full flex items-center justify-center">
+                    <div className="w-20 h-20 bg-linear-to-br from-primary to-primary-dark rounded-full flex items-center justify-center">
                         <Email sx={{ fontSize: 40, color: 'white' }} />
                     </div>
                 </div>
