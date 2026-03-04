@@ -15,7 +15,7 @@ export default function HybridLogin(props: PageProps<Extract<KcContext, { pageId
     return (
         <Template
             {...props}
-            headerNode={msg("loginTitle")}
+            headerNode={msg("loginTitle", realm.displayName ?? realm.name)}
             socialProvidersNode={
                 social?.providers !== undefined &&
                 social.providers.length > 0 && (

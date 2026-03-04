@@ -17,7 +17,7 @@ export default function HybridLoginUsername(
     return (
         <Template
             {...props}
-            headerNode={msg("loginTitle")}
+            headerNode={msg("loginTitle", realm.displayName ?? realm.name)}
             socialProvidersNode={
                 social?.providers !== undefined &&
                 social.providers.length > 0 && (

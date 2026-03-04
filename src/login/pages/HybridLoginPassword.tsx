@@ -14,7 +14,7 @@ export default function HybridLoginPassword(props: PageProps<Extract<KcContext, 
     const [showPassword, setShowPassword] = useState(false);
 
     return (
-        <Template {...props} headerNode={msg("loginTitle")} socialProvidersNode={undefined}>
+        <Template {...props} headerNode={msg("loginTitle", realm.displayName ?? realm.name)} socialProvidersNode={undefined}>
             <form action={url.loginAction} method="post" className="space-y-5">
                 <div className="flex flex-col gap-2 pt-4">
                     {/* Intro */}
