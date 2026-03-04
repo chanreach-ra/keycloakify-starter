@@ -23,6 +23,7 @@ import HybridLoginUsername from "./pages/HybridLoginUsername";
 import HybridLoginPassword from "./pages/HybridLoginPassword";
 import HybridLoginOauthGrant from "./pages/HybridLoginOauthGrant";
 import HybridSelectAuthenticator from "./pages/HybridSelectAuthenticator";
+import HybridIdpLinkConfirm from "./pages/HybridIdpLinkConfirm";
 
 const UserProfileFormFields = lazy(
     () => import("keycloakify/login/UserProfileFormFields")
@@ -203,6 +204,16 @@ export default function KcPage(props: { kcContext: KcContext }) {
                     case "select-authenticator.ftl":
                         return (
                             <HybridSelectAuthenticator
+                                kcContext={kcContext}
+                                i18n={i18n}
+                                classes={classes}
+                                Template={HybridTemplate}
+                                doUseDefaultCss={false}
+                            />
+                        );
+                    case "login-idp-link-confirm.ftl":
+                        return (
+                            <HybridIdpLinkConfirm
                                 kcContext={kcContext}
                                 i18n={i18n}
                                 classes={classes}

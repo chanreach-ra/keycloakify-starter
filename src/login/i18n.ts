@@ -68,6 +68,10 @@ const { useI18n, ofTypeI18n } = i18nBuilder
                     "pageExpiredMsg2": "សូមចាប់ផ្តើមដំណើរការចូលឡើងវិញ។",
                     "restartLoginTooltip": "ចាប់ផ្តើមឡើងវិញ",
                     
+                    // IDP Link Confirm
+                    "confirmLinkIdpTitle": "គណនីមានរួចហើយ",
+                    "confirmLinkIdpReviewProfile": "អ្នកប្រើប្រាស់ដែលមានអ៊ីមែល {0} មានរួចហើយ។ តើអ្នកចង់បន្តដោយរបៀបណា?",
+                    
                     // Common actions
                     "doSubmit": "ដាក់ស្នើ",
                     "doCancel": "បោះបង់",
