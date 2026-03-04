@@ -10,7 +10,7 @@ import { getKcContextMock } from "./login/KcPageStory";
 
 if (import.meta.env.DEV) {
     window.kcContext = getKcContextMock({
-        pageId: "login-verify-email.ftl", // Change this to test different pages: "login.ftl", "register.ftl", etc.
+        pageId: "login-otp.ftl", // Change this to test different pages: "login.ftl", "register.ftl", etc.
         overrides: {
             locale: {
                 supported: [

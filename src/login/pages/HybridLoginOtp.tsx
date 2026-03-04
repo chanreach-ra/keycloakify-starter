@@ -20,6 +20,13 @@ export default function HybridLoginOtp(props: PageProps<Extract<KcContext, { pag
     return (
         <Template kcContext={kcContext} i18n={i18n} doUseDefaultCss={doUseDefaultCss} classes={classes} headerNode={msg("doLogIn")}>
             <form action={url.loginAction} method="post" className="space-y-6">
+                {/* Intro Message */}
+                <div className="p-4 rounded-lg bg-blue-50 border border-blue-200">
+                    <p className="text-sm text-blue-800">
+                        Enter the verification code from your authenticator app
+                    </p>
+                </div>
+
                 {/* Device Selection */}
                 {otpLogin.userOtpCredentials && otpLogin.userOtpCredentials.length > 1 && (
                     <div className="space-y-2">
