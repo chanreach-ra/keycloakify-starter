@@ -12,20 +12,19 @@ export default function HybridLoginPassword(props: PageProps<Extract<KcContext, 
 
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
-    const [isSubmitting, setIsSubmitting] = useState(false);
 
     return (
-        <Template {...props} headerNode={msg("doLogIn")} socialProvidersNode={undefined}>
+        <Template {...props} headerNode={msg("loginTitle")} socialProvidersNode={undefined}>
             <form action={url.loginAction} method="post" className="space-y-5">
                 <div className="flex flex-col gap-2 pt-4">
                     {/* Intro */}
-                    <div className="p-4 rounded-lg bg-blue-50 border border-blue-200">
-                        <p className="text-sm text-blue-800">Enter your password to continue</p>
+                    <div className="p-4 rounded-2xl bg-blue-50 border border-blue-200">
+                        <p className="text-sm text-blue-800">{msg("loginAccountTitle")}</p>
                     </div>
 
                     {/* Show Username if enabled */}
                     {auth?.showUsername && auth.attemptedUsername && (
-                        <div className="p-3 bg-gray-50 border border-gray-200 rounded-lg">
+                        <div className="p-4 bg-gray-50 border border-gray-200 rounded-2xl">
                             <Typography variant="body2" className="text-gray-700">
                                 <span className="text-xs text-gray-600 block">Logging in as:</span>
                                 <span className="font-semibold">{auth.attemptedUsername}</span>
@@ -61,8 +60,6 @@ export default function HybridLoginPassword(props: PageProps<Extract<KcContext, 
                     fullWidth
                     size="large"
                     className="bg-linear-to-r from-primary to-primary-dark hover:shadow-xl transform hover:-translate-y-0.5 transition-all normal-case font-semibold py-3"
-                    disabled={isSubmitting}
-                    onClick={() => setIsSubmitting(true)}
                     sx={{ textTransform: "none", py: 1.5 }}
                 >
                     {msg("doLogIn")}

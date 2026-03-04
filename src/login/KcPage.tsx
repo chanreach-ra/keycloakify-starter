@@ -4,6 +4,8 @@ import type { KcContext } from "./KcContext";
 import { useI18n } from "./i18n";
 import DefaultPage from "keycloakify/login/DefaultPage";
 import HybridTemplate from "./HybridTemplate";
+import { ThemeProvider } from "@mui/material/styles";
+import { theme } from "../theme";
 import HybridLogin from "./pages/HybridLogin";
 import HybridRegister from "./pages/HybridRegister";
 import HybridForgotPassword from "./pages/HybridForgotPassword";
@@ -34,9 +36,10 @@ export default function KcPage(props: { kcContext: KcContext }) {
     const { i18n } = useI18n({ kcContext });
 
     return (
-        <Suspense>
-            {(() => {
-                switch (kcContext.pageId) {
+        <ThemeProvider theme={theme}>
+            <Suspense>
+                {(() => {
+                    switch (kcContext.pageId) {
                     case "login.ftl":
                         return (
                             <HybridLogin
@@ -221,7 +224,8 @@ export default function KcPage(props: { kcContext: KcContext }) {
                         );
                 }
             })()}
-        </Suspense>
+            </Suspense>
+        </ThemeProvider>
     );
 }
 

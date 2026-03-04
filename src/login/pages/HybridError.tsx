@@ -17,6 +17,7 @@ export default function HybridError(
             i18n={i18n}
             doUseDefaultCss={doUseDefaultCss}
             classes={classes}
+            displayMessage={false}
             headerNode={msg("errorTitle")}
         >
             <div className="space-y-6 text-center">

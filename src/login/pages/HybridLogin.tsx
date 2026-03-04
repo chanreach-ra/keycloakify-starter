@@ -15,7 +15,7 @@ export default function HybridLogin(props: PageProps<Extract<KcContext, { pageId
     return (
         <Template
             {...props}
-            headerNode={undefined}
+            headerNode={msg("loginTitle")}
             socialProvidersNode={
                 social?.providers !== undefined &&
                 social.providers.length > 0 && (
@@ -42,11 +42,9 @@ export default function HybridLogin(props: PageProps<Extract<KcContext, { pageId
             }
         >
             <form action={url.loginAction} method="post" className="space-y-5">
-                <div className="m-0">
-                    <Typography variant="h5" component="h2" className="font-semibold mb-6">
-                        {msg("doLogIn")}
-                    </Typography>
-                    
+                {/* Intro */}
+                <div className="p-4 rounded-lg bg-blue-50 border border-blue-200">
+                    <p className="text-sm text-blue-800">{msg("loginAccountTitle")}</p>
                 </div>
 
                 {/* Username/Email Field */}

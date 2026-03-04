@@ -4,6 +4,12 @@
 @theme {
   --color-primary: #667eea;
   --color-primary-dark: #764ba2;
+
+  --radius-xs: 0.25rem;
+  --radius-md: 0.6rem;
+  --radius-xl: 0.75rem;  /* 12px - matches MUI shape.borderRadius */
+  --radius-2xl: 0.75rem; /* 12px - matches MUI shape.borderRadius */
+  --radius-custom: 30px;
 }
 
 /* Custom animations */

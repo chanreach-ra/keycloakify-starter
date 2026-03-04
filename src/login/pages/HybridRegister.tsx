@@ -9,10 +9,10 @@ export default function HybridRegister(props: PageProps<Extract<KcContext, { pag
     const { msg } = i18n;
 
     return (
-        <Template {...props} headerNode={undefined}>
+        <Template {...props} headerNode={msg("registerTitle")}>
             <form action={url.registrationAction} method="post" className="space-y-5">
                 <Typography variant="h5" component="h2" className="font-semibold mb-6">
-                    {msg("registerTitle")}
+                    
                 </Typography>
 
                 <div className="flex flex-row gap-2 pt-4">

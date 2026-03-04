@@ -8,24 +8,46 @@ export default function HybridLoginUsername(
     props: PageProps<Extract<KcContext, { pageId: "login-username.ftl" }>, I18n>
 ) {
     const { kcContext, i18n, Template } = props;
-    const { realm, url, usernameHidden, login, registrationDisabled } = kcContext;
+    const { social, realm, url, usernameHidden, login, registrationDisabled } = kcContext;
     const { msg } = i18n;
 
     const [username, setUsername] = useState(login.username ?? "");
     const [rememberMe, setRememberMe] = useState(login.rememberMe === "on");
-    const [isSubmitting, setIsSubmitting] = useState(false);
 
     return (
         <Template
             {...props}
-            headerNode={msg("doLogIn")}
-            socialProvidersNode={undefined}
+            headerNode={msg("loginTitle")}
+            socialProvidersNode={
+                social?.providers !== undefined &&
+                social.providers.length > 0 && (
+                    <div className="mt-6 pt-6 border-t border-gray-200">
+                        <Typography variant="body2" className="text-center text-gray-600 mb-4">
+                            {msg("identity-provider-login-label")}
+                        </Typography>
+                        <div className="space-y-3">
+                            {social.providers.map(p => (
+                                <Button
+                                    key={p.alias}
+                                    variant="outlined"
+                                    fullWidth
+                                    href={p.loginUrl}
+                                    startIcon={p.iconClasses && <i className={p.iconClasses} aria-hidden="true" />}
+                                    className="capitalize"
+                                >
+                                    {p.displayName}
+                                </Button>
+                            ))}
+                        </div>
+                    </div>
+                )
+            }
         >
             <form action={url.loginAction} method="post" className="space-y-5">
                 {/* Intro */}
-                <div className="p-4 rounded-lg bg-blue-50 border border-blue-200">
+                <div className="p-4 rounded-2xl bg-blue-50 border border-blue-200">
                     <p className="text-sm text-blue-800">
-                        Enter your username or email to continue
+                        {msg("loginAccountTitle")}
                     </p>
                 </div>
 
@@ -74,8 +96,6 @@ export default function HybridLoginUsername(
                     variant="contained"
                     fullWidth
                     size="large"
-                    disabled={isSubmitting}
-                    onClick={() => setIsSubmitting(true)}
                     sx={{ textTransform: "none", py: 1.5 }}
                 >
                     {msg("doLogIn")}

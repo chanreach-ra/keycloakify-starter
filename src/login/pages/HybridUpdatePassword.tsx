@@ -16,7 +16,7 @@ export default function HybridUpdatePassword(props: PageProps<Extract<KcContext,
     return (
         <Template kcContext={kcContext} i18n={i18n} doUseDefaultCss={doUseDefaultCss} classes={classes} headerNode={msg("updatePasswordTitle")}>
             <form action={url.loginAction} method="post" className="space-y-6">
-                <div className="flex flex-col gap-2 pt-4">
+                <div className="flex flex-col gap-4 pt-4">
                     <TextField
                         fullWidth
                         type={showPassword ? "text" : "password"}

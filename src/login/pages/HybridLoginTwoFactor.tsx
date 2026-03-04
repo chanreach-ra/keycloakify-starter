@@ -8,11 +8,10 @@ import { VisibilityOutlined, VisibilityOffOutlined } from "@mui/icons-material";
 export default function HybridLoginTwoFactor(props: PageProps<Extract<KcContext, { pageId: "login-config-totp.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
     const { msg } = i18n;
-    const { url, totp } = kcContext;
+    const { url, totp, isAppInitiatedAction } = kcContext;
 
     const [tabValue, setTabValue] = useState(0);
     const [showSecret, setShowSecret] = useState(false);
-    const [isSubmitting, setIsSubmitting] = useState(false);
 
     return (
         <Template
@@ -22,7 +21,7 @@ export default function HybridLoginTwoFactor(props: PageProps<Extract<KcContext,
             classes={classes}
             headerNode={msg("doLogIn")}
         >
-            <form action={url.loginAction} method="post" className="space-y-6" onSubmit={() => setIsSubmitting(true)}>
+            <form action={url.loginAction} method="post" className="space-y-6">
                 {/* Intro */}
                 <div className="p-4 rounded-lg bg-blue-50 border border-blue-200">
                     <h3 className="font-semibold text-blue-900 mb-1">Set Up Two-Factor Authentication</h3>
@@ -44,8 +43,8 @@ export default function HybridLoginTwoFactor(props: PageProps<Extract<KcContext,
                     {tabValue === 0 && (
                         <div className="flex flex-col items-center gap-4">
                             <p className="text-sm text-gray-600">Scan this QR code with your authenticator app:</p>
-                            {totp?.qrUrl && (
-                                <img src={totp.qrUrl} alt="QR" className="w-40 h-40 border border-gray-200 rounded" />
+                            {totp?.totpSecretQrCode && (
+                                <img src={totp.totpSecretQrCode} alt="QR" className="w-40 h-40 border border-gray-200 rounded" />
                             )}
                         </div>
                     )}
@@ -106,23 +105,26 @@ export default function HybridLoginTwoFactor(props: PageProps<Extract<KcContext,
                     fullWidth
                     size="large"
                     className="bg-linear-to-r from-primary to-primary-dark hover:shadow-xl transform hover:-translate-y-0.5 transition-all normal-case font-semibold py-3"
-                    disabled={isSubmitting}
                     sx={{ textTransform: "none", py: 1.5 }}
                 >
-                    {isSubmitting ? "Setting up..." : "Setup Complete"}
+                    Setup Complete
                 </Button>
 
                 {/* Skip */}
-                <div className="text-center">
-                    <Button
-                        variant="text"
-                        size="small"
-                        href={window.location.pathname}
-                        sx={{ textTransform: "none" }}
-                    >
-                        Skip for now
-                    </Button>
-                </div>
+                {isAppInitiatedAction && (
+                    <div className="text-center">
+                        <Button
+                            type="submit"
+                            name="cancel-aia"
+                            value="true"
+                            variant="text"
+                            size="small"
+                            sx={{ textTransform: "none" }}
+                        >
+                            Skip for now
+                        </Button>
+                    </div>
+                )}
             </form>
         </Template>
     );

@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
-import { Button, Typography, RadioGroup, FormControlLabel, Radio, Card, CardContent } from "@mui/material";
+import { Button, Typography, RadioGroup, FormControlLabel, Radio, CardContent } from "@mui/material";
 
 export default function HybridSelectAuthenticator(props: PageProps<Extract<KcContext, { pageId: "select-authenticator.ftl" }>, I18n>) {
     const { kcContext, i18n, Template } = props;
@@ -34,21 +34,17 @@ export default function HybridSelectAuthenticator(props: PageProps<Extract<KcCon
                 <div className="flex flex-col space-y-3">
                     <RadioGroup value={selectedAuthExecId} onChange={e => setSelectedAuthExecId(e.target.value)}>
                         {authenticationSelections.map(auth => (
-                            <Card
+                            <div
                                 key={auth.authExecId}
-                                className={`cursor-pointer transition-all border-2 mt-2 ${
-                                    selectedAuthExecId === auth.authExecId ? "border-blue-500 bg-blue-50" : "border-gray-200 hover:border-gray-300"
-                                }`}
+                                className="cursor-pointer transition-all mt-2 border border-gray-200 rounded-lg hover:shadow-lg"
                             >
                                 <CardContent className="p-4">
                                     <FormControlLabel
                                         control={
                                             <Radio
                                                 value={auth.authExecId}
-                                                sx={{
-                                                    mr: 2,
-                                                    "&.Mui-checked": { color: "#2563eb" }
-                                                }}
+                                                checked={selectedAuthExecId === auth.authExecId}
+                                                onChange={() => setSelectedAuthExecId(auth.authExecId)}
                                             />
                                         }
                                         label={
@@ -68,7 +64,7 @@ export default function HybridSelectAuthenticator(props: PageProps<Extract<KcCon
                                         }}
                                     />
                                 </CardContent>
-                            </Card>
+                            </div>
                         ))}
                     </RadioGroup>
                 </div>

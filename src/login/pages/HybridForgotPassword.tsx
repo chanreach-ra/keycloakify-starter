@@ -1,4 +1,4 @@
-import { TextField, Button, Typography, Link } from "@mui/material";
+import { TextField, Button, Link } from "@mui/material";
 import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
@@ -9,15 +9,12 @@ export default function HybridForgotPassword(props: PageProps<Extract<KcContext,
     const { msg } = i18n;
 
     return (
-        <Template {...props} headerNode={undefined}>
+        <Template {...props} headerNode={msg("emailForgotTitle")}>
             <form action={url.loginAction} method="post" className="space-y-5">
-                <Typography variant="h5" component="h2" className="font-semibold mb-6">
-                    {msg("emailForgotTitle")}
-                </Typography>
-
-                <Typography variant="body2" className="text-gray-600 mb-4">
-                    {msg("emailInstruction")}
-                </Typography>
+                {/* Intro */}
+                <div className="p-4 rounded-2xl bg-blue-50 border border-blue-200">
+                    <p className="text-sm text-blue-800">{msg("emailInstruction")}</p>
+                </div>
 
                 {/* Username/Email Field */}
                 <div className="py-4 m-0">
